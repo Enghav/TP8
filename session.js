@@ -3,14 +3,14 @@ const taskList = document.getElementById('taskList');
 const taskTitleInput = document.getElementById('taskTitle');
 const assigneeInput = document.getElementById('assignee');
 const taskDateInput = document.getElementById('taskDate');
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let tasks = JSON.parse(sessionStorage.getItem('tasks')) || [];
 function renderTasks() {
   taskList.innerHTML = '';
 
   tasks.forEach((task, index) => {
     const listItem = document.createElement('tasks');
     listItem.innerHTML = `
-      <div class="flex w-[700px] justify-between border-2 p-2 rounded-[10px] text-slate-700 m-2">
+      <div class="flex w-[700px] justify-between border-2 p-2 rounded-[10px] text-slate-700 mb-[4px]">
         <span>${task.title}</span>
         <span>${task.assignee}</span>
         <span>${task.date}</span>
@@ -29,7 +29,7 @@ function addTask(event) {
 
   const task = { title, assignee, date };
   tasks.push(task);
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+  sessionStorage.setItem('tasks', JSON.stringify(tasks));
   taskTitleInput.value = '';
   assigneeInput.value = '';
   taskDateInput.value = '';
@@ -39,7 +39,7 @@ function addTask(event) {
 function deleteTask(index) {
   tasks.splice(index, 1);
 
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+  sessionStorage.setItem('tasks', JSON.stringify(tasks));
 
   renderTasks();
 }
