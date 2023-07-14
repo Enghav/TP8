@@ -1,16 +1,16 @@
-const taskForm = document.getElementById('taskForm');
-const taskList = document.getElementById('taskList');
-const taskTitleInput = document.getElementById('taskTitle');
-const assigneeInput = document.getElementById('assignee');
-const taskDateInput = document.getElementById('taskDate');
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+const taskForm = document.getElementById("taskForm");
+const taskList = document.getElementById("taskList");
+const taskTitleInput = document.getElementById("taskTitle");
+const assigneeInput = document.getElementById("assignee");
+const taskDateInput = document.getElementById("taskDate");
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 function renderTasks() {
-  taskList.innerHTML = '';
+  taskList.innerHTML = "";
 
   tasks.forEach((task, index) => {
-    const listItem = document.createElement('tasks');
+    const listItem = document.createElement("tasks");
     listItem.innerHTML = `
-      <div class="flex w-[700px] justify-between border-2 p-2 rounded-[10px] text-slate-700 m-2">
+      <div class="flex w-[700px] justify-between border-2 p-2 rounded-[10px] text-slate-700 m-2 ml-0">
         <span>${task.title}</span>
         <span>${task.assignee}</span>
         <span>${task.date}</span>
@@ -29,21 +29,21 @@ function addTask(event) {
 
   const task = { title, assignee, date };
   tasks.push(task);
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-  taskTitleInput.value = '';
-  assigneeInput.value = '';
-  taskDateInput.value = '';
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  taskTitleInput.value = "";
+  assigneeInput.value = "";
+  taskDateInput.value = "";
   renderTasks();
 }
 
 function deleteTask(index) {
   tasks.splice(index, 1);
 
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
   renderTasks();
 }
 
-taskForm.addEventListener('submit', addTask);
+taskForm.addEventListener("submit", addTask);
 
 renderTasks();

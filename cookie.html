@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> cookie management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <script src="cookie.js"></script>
+
+<body >
+  <div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4 text-center">Cookie Management</h1>
+    <form id="taskForm" class="mb-4">
+      <div class="flex items-center w-[700px] justify-between ml-8 bg-slate-500 p-5 rounded-[10px]">
+        <input id="Key" type="text" placeholder="Key" class="border rounded-l py-2 px-4 w-[150px]"
+          required>
+        <input id="Value" type="text" placeholder="Value" class="border py-2 px-4 w-[150px]" required>
+        <input id="ExpiredDate" type="date" class="border rounded-r py-2 px-4 w-[150px]" required >
+        <button type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 ml-2 rounded">Add Task</button>
+      </div>
+    </form>
+    <ul id="taskList" class="list-disc pl-8"></ul>
+  </div>
+
+  <script src="cookie.js">
+  </script>
 </body>
+
 </html>
